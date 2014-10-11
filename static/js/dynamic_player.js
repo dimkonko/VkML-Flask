@@ -1,4 +1,7 @@
 (function() {
+	var play_icon = "static/img/play-icon.png",
+		pause_icon = "static/img/pause-icon.png";
+
 	var player = document.getElementById("player"),
 		player_track = document.getElementById("player_track");
 
@@ -13,19 +16,18 @@
 	 * Event Handlers
 	 */
 	track_list.on("click", function() {
-		if(curTrack === $(this)) {
-			player.autoplay = false;
-			player.pause();
-		} else {
-			playTrack($(this));
-			player.autoplay = true;
-		}
+		playTrack($(this));
+	    curTrack.attr("id", "track_playing");
+
+		player.autoplay = true;
 	});
 
 
 	function initPlayer() {
-		playTrack($(".play_img").first())
+		curTrack = $(".play_img").first();
+		playTrack(curTrack);
 		player.autoplay = false;
+		curTrack.find(".play_img").attr("src", play_icon);
 	};
 
 	function playTrack(trackFromList) {
@@ -33,9 +35,13 @@
 			track_url = track.find("input").val(),
 			track_name = track.find("span").html();
 
+		curTrack.removeAttr("id");
+		curTrack.find(".play_img").attr("src", play_icon);
+
 	    player.src = track_url;
 	    player_track.innerHTML = track_name;
 
-	    curTrack = trackFromList;
+	    trackFromList.attr("src", pause_icon);
+	    curTrack = track;
 	}
 })();

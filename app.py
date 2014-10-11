@@ -18,6 +18,8 @@ app.secret_key = os.urandom(27)
 
 @app.route("/")
 def index():
+	if "user" in session:
+		return redirect("/profile")
 	auth_link = "https://oauth.vk.com/authorize?" +\
 				"client_id=4585679" +\
 				"&scope=audio" +\
