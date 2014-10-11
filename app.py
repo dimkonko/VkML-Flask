@@ -1,4 +1,3 @@
-# from urlparse import urlparse, parse_qs
 import os
 import requests
 import json
@@ -25,6 +24,7 @@ def index():
 				"&redirect_uri=http://localhost:5000/auth" +\
 				"&response_type=code"
 	return render_template("home.html", auth_link=auth_link)
+
 
 @app.route("/auth")
 def auth():
@@ -53,25 +53,12 @@ def profile():
 	r = requests.post("https://api.vk.com/method/audio.get?" +\
 		"user_id={0}".format(session["user"]["user_id"]) +\
 		"&access_token={0}".format(session["user"]["token"]) +\
-		"&count=5" +\
+		# "&count=5" +\
 		"&v=5.25"
 	)
 	req_data = json.loads(r.text)["response"]
 	track_list = req_data["items"]
 	return render_template("profile.html", track_list=track_list)
-
-
-def url_to_dict(url):
-	# data = parse_qs(urlparse(url).query)
-	# if "error" in data:
-	# 	return None
-	# return data
-	print url
-	url_args = url.split("#")
-	arg_pairs = [arg.split("&") for arg in url_args]
-	data = map(arg_pairs)
-	return data
-
 
 
 if __name__ == "__main__":

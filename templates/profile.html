@@ -2,11 +2,15 @@
 {% block title %}Profile{% endblock %}
 
 {% block head %}
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="static/css/profile.css">
+
+	<script src="static/js/jquery-1.11.0.min.js"></script>
 {% endblock %}
 
 {% block content %}
-	<div id="player_wrapp">
+<div id="wrapper">
+	<div id="player_wrapper">
+		<div id="player_track"></div>
 		<audio id="player" src="" controls autoplay>
 			Your browser doesn't support this player :(
 		</audio>
@@ -17,6 +21,9 @@
 		<li class="track">
 			<img src="static/img/button-play.png">
 			<span>{{ track.artist }} - {{ track.title }}</span>
+			<a class="download_but" href="{{ track.url }}" download="{{ track.artist }} - {{ track.title }}">
+				<img src="static/img/save-icon.png">
+			</a>
 			<input type="text" value="{{ track.url }}" hidden/>
 		</li>
 		{% endfor %}
@@ -24,4 +31,5 @@
 
 	<!-- Scripts for faster loading -->
 	<script src="static/js/dynamic_player.js"></script>
+</div>
 {% endblock %}
