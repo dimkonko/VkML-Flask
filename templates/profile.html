@@ -1,0 +1,27 @@
+{% extends "base.jinja2" %}
+{% block title %}Profile{% endblock %}
+
+{% block head %}
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+{% endblock %}
+
+{% block content %}
+	<div id="player_wrapp">
+		<audio id="player" src="" controls autoplay>
+			Your browser doesn't support this player :(
+		</audio>
+	</div>
+
+	<ul id="track_list">
+		{% for track in track_list %}
+		<li class="track">
+			<img src="static/img/button-play.png">
+			<span>{{ track.artist }} - {{ track.title }}</span>
+			<input type="text" value="{{ track.url }}" hidden/>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<!-- Scripts for faster loading -->
+	<script src="static/js/dynamic_player.js"></script>
+{% endblock %}

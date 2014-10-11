@@ -1,0 +1,18 @@
+ul {
+	margin: 0;
+	padding: 0;
+}
+.track {
+	list-style: none;
+	width: 500px;
+	/*background-color: #187af2;*/
+	background-color: #E9ECF0;
+	margin: 3px 0;
+	height: 32px;
+	line-height: 32px;
+	padding: 2px;
+
+}
+.track img,span {
+	float: left;
+}
