@@ -11,7 +11,7 @@
 <div id="wrapper">
 	<div id="player_wrapper">
 		<div id="player_track"></div>
-		<audio id="player" src="" controls autoplay>
+		<audio id="player" src="" controls preload="none">
 			Your browser doesn't support this player :(
 		</audio>
 	</div>
@@ -19,7 +19,7 @@
 	<ul id="track_list">
 		{% for track in track_list %}
 		<li class="track">
-			<img src="static/img/button-play.png">
+			<img class="play_img" src="static/img/button-play.png">
 			<span>{{ track.artist }} - {{ track.title }}</span>
 			<a class="download_but" href="{{ track.url }}" download="{{ track.artist }} - {{ track.title }}">
 				<img src="static/img/save-icon.png">
