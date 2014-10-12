@@ -1,8 +1,3 @@
-ul {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
 #bg_img {
 	position: fixed;
 	top: 0;
@@ -15,6 +10,8 @@ ul {
 	margin: auto;
 	width: 60%;
 }
+
+/* Player */
 #player_wrapper {
 	background-color: #E9ECF0;
 	padding: 5px;
@@ -30,7 +27,11 @@ ul {
 	width: 100%;
 	background-color: #E9ECF0;
 }
+
+/* Track list */
 #track_list {
+	margin: 0;
+	padding: 0;
 	margin-top: 10px;
 }
 .track {
@@ -45,7 +46,7 @@ ul {
 	border: 2px solid #3cb0fd;
 	opacity: 0.925;
 }
-.track img,span {
+.track img, span {
 	float: left;
 }
 .track span {
@@ -55,6 +56,11 @@ ul {
 	display: block;
 	float: right;
 }
+.play_img, .download_but:hover {
+	cursor: pointer;
+}
+
+/* When track is playing */*
 #track_playing {
 	background-color: #76c9fa;
 	opacity: 0.97;
