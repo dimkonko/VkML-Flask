@@ -9,11 +9,15 @@ from flask import (
 	request,
 	redirect
 )
+from etc.view_decorators import need_login
 
 
 app = Flask(__name__)
-app.debug = True
-app.secret_key = os.urandom(27)
+app.config["DEBUG"] = False
+app.config["TESTING"] = False
+app.config["SECRET_KEY"] = os.urandom(24)
+
+AUTH_ROUTE = "auth"
 
 
 @app.route("/")
@@ -23,32 +27,36 @@ def index():
 	auth_link = "https://oauth.vk.com/authorize?" +\
 				"client_id=4585679" +\
 				"&scope=audio" +\
-				"&redirect_uri=http://localhost:5000/auth" +\
+				"&redirect_uri={0}".format(request.url_root + AUTH_ROUTE) +\
 				"&response_type=code"
 	return render_template("home.html", auth_link=auth_link)
 
 
 @app.route("/auth")
 def auth():
-	req_data = request.args.get("code")#url_to_dict(request.url)
+	req_data = request.args.get("code")
+	print "data", req_data
 	if not req_data:
-		return "Something goes wrong"
+		abort(500)
+
+	print "url: ", request.url_root
 
 	r = requests.get("https://oauth.vk.com/access_token?client_id=4585679"+\
 		"&client_secret=UR0YHKjbj0ZwKg2nOKuN"+\
-		"&redirect_uri=http://localhost:5000/auth" +\
+		"&redirect_uri={0}".format(request.url_root + AUTH_ROUTE) +\
 		"&code={0}".format(req_data)
 	)
 	req_data = json.loads(r.text)
 
 	if "error" in req_data:
-		return "Something goes wrong"
+		abort(500)
 
 	session["user"] = {"token": req_data["access_token"], "user_id": req_data["user_id"]}
 	return redirect("/profile")
 
 
 @app.route("/profile")
+@need_login
 def profile():
 	if "user" not in session:
 		return redirect("/")
@@ -64,6 +72,7 @@ def profile():
 
 
 @app.route("/logout")
+@need_login
 def logout():
 	if "user" not in session:
 		return redirect("/")
