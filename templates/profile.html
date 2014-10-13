@@ -2,19 +2,23 @@
 {% block title %}Profile{% endblock %}
 
 {% block head %}
+	<link rel="stylesheet" type="text/css" href="static/css/button.css">
 	<link rel="stylesheet" type="text/css" href="static/css/profile.css">
 
 	<script src="static/js/jquery-1.11.0.min.js"></script>
 {% endblock %}
 
 {% block content %}
+<div id="menu_buttons">
+	<a id="logout" class="btn" href="/logout">Logout</a>
+</div>
+<div id="player_wrapper">
+	<div id="player_track"></div>
+	<audio id="player" src="" controls preload="none">
+		Your browser doesn't support this player :(
+	</audio>
+</div>
 <div id="wrapper">
-	<div id="player_wrapper">
-		<div id="player_track"></div>
-		<audio id="player" src="" controls preload="none">
-			Your browser doesn't support this player :(
-		</audio>
-	</div>
 
 	<ul id="track_list">
 		{% for track in track_list %}
@@ -27,7 +31,7 @@
 			<input type="text" value="{{ track.url }}" hidden/>
 		</li>
 		{% endfor %}
-	</ul>
+	</ul>	
 	<img id="bg_img" src="static/img/home-bg.jpg">
 
 	<!-- Scripts for faster loading -->

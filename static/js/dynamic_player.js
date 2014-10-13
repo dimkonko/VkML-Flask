@@ -34,7 +34,7 @@
 		var track = trackFromList.parent();
 			track_url = track.find("input").val(),
 			track_name = track.find("span").html();
-
+			
 		curTrack.removeAttr("id");
 		curTrack.find(".play_img").attr("src", play_icon);
 

@@ -63,5 +63,13 @@ def profile():
 	return render_template("profile.html", track_list=track_list)
 
 
+@app.route("/logout")
+def logout():
+	if "user" not in session:
+		return redirect("/")
+	session.clear()
+	return redirect("/")
+
+
 if __name__ == "__main__":
 	app.run()

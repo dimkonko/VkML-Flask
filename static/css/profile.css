@@ -7,14 +7,29 @@
 	z-index: -1;
 }
 #wrapper {
-	margin: auto;
 	width: 60%;
+	margin: 0;
+	padding: 0;
+	margin: auto;
+}
+
+/* Menu buttons*/
+#menu_buttons {
+	float: left;
+	margin: 20px;
 }
 
 /* Player */
 #player_wrapper {
+	position: fixed;
 	background-color: #E9ECF0;
+	z-index: 2;
 	padding: 5px;
+	width: 62%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
 }
 #player_track {
 	margin-bottom: 4px;
