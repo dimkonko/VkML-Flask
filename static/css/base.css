@@ -3,7 +3,6 @@ body {
 	padding: 0;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: url('../img/bg.png') repeat;
-	position: relative;
 }
 ul {
 	list-style: none;
@@ -14,5 +13,29 @@ ul {
 .dude {
 	display: block;
 	margin: auto;
-	height: 400px;
+	position: absolute;
+	bottom: 15px;
+	left: 0px;
+	right: 0;
+}
+
+@media screen and (min-width: 0px) {
+	.dude {
+		height: 350px;
+	}
+}
+
+
+@media screen and (min-width: 700px) {
+	.dude {
+		height: 400px;
+	}
+}
+
+
+
+@media screen and (min-width: 1000px) {
+	.dude {
+		height: 500px;
+	}
 }
