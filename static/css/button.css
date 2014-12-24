@@ -12,9 +12,14 @@
 	text-decoration: none;
 	color: #3cb0fd;
 	text-align: center;
+	transition: all 0.2s ease-in-out;
 }
 .btn:hover {
   background: #3cb0fd;
   color: #fff;
   text-decoration: none;
+}
+.btn:focus {
+	position: relative;
+	top: 1px;
 }
