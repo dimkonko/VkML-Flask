@@ -8,6 +8,8 @@
 	 * Event Handlers
 	 */
 	playIcon.on("click", function() {
+		var el;
+
 		$(".track_playing").removeClass('track_playing');
 
 		playTrack(el = $(this).parent());
@@ -19,14 +21,10 @@
 	});
 
 	function playTrack(el) {
-		var icon = el.find('.play_img'),
-		trackUrl = el.data("track-url"),
+		var trackUrl = el.data("track-url"),
 		trackName = el.find("span").html();
 
 		el.addClass('track_playing');
-
-		icon.removeClass('play_img_not_playing')
-		.addClass('play_img_playing');
 
 		player.attr("src", trackUrl);
 		playerTrack.html(trackName);

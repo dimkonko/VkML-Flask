@@ -74,18 +74,15 @@
 .play_img {
 	width: 32px;
 	height: 32px;
-}
-
-.play_img_playing {
-	background: url(../img/pause-icon.png);
-}
-
-.play_img_not_playing {
 	background: url(../img/play-icon.png);
 }
 
 /* When track is playing */*
 .track_playing {
 	background-color: #76c9fa;
-	opacity: 0.97;
+	opacity: 0.97;	
+}
+
+.track_playing .play_img {
+	background: url(../img/pause-icon.png);
 }
