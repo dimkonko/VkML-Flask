@@ -8,6 +8,8 @@
 	 * Event Handlers
 	 */
 	playIcon.on("click", function() {
+		$(".track_playing").removeClass('track_playing');
+
 		playTrack(el = $(this).parent());
 
 		player.on('ended', function() {
