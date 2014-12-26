@@ -54,7 +54,7 @@
 	border: 2px solid #3cb0fd;
 	opacity: 0.925;
 }
-.track img, .track_title {
+.track img, .track_title, .play_img {
 	float: left;
 }
 .track_title {
@@ -69,6 +69,19 @@
 }
 .play_img, .download_but:hover {
 	cursor: pointer;
+}
+
+.play_img {
+	width: 32px;
+	height: 32px;
+}
+
+.play_img_playing {
+	background: url(../img/pause-icon.png);
+}
+
+.play_img_not_playing {
+	background: url(../img/play-icon.png);
 }
 
 /* When track is playing */*

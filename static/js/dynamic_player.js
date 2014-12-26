@@ -1,43 +1,34 @@
 (function() {
-	var play_icon = "static/img/play-icon.png",
-		pause_icon = "static/img/pause-icon.png",
-		player = $("#player"),
-		player_track = $("#player_track"),
-		track_list = $(".play_img"),
-		curTrack;
-
-	// Init player with first track
-	initPlayer();
+	var player = $("#player"),
+		playerTrack = $("#player_track"),
+		playIcon = $(".play_img"),
+		curTrack = playIcon.first().parent();
 
 	/*
 	 * Event Handlers
 	 */
-	track_list.on("click", function() {
-		playTrack($(this));
-	    curTrack.attr("id", "track_playing");
-		player.autoplay = true;
+	playIcon.on("click", function() {
+		playTrack(el = $(this).parent());
+
+		player.on('ended', function() {
+			el.removeClass('track_playing');
+			playTrack(el = el.next());
+		});
 	});
 
+	function playTrack(el) {
+		var icon = el.find('.play_img'),
+		trackUrl = el.data("track-url"),
+		trackName = el.find("span").html();
 
-	function initPlayer() {
-		curTrack = $(".play_img").first();
-		playTrack(curTrack);
-		player.autoplay = false;
-		curTrack.find(".play_img").attr("src", play_icon);
-	};
+		el.addClass('track_playing');
 
-	function playTrack(trackFromList) {
-		var track = trackFromList.parent();
-			track_url = track.find("input").val(),
-			track_name = track.find("span").html();
-			
-		curTrack.removeAttr("id");
-		curTrack.find(".play_img").attr("src", play_icon);
+		icon.removeClass('play_img_not_playing')
+		.addClass('play_img_playing');
 
-	    player.src = track_url;
-	    player_track.html(track_name);
+		player.attr("src", trackUrl);
+		playerTrack.html(trackName);
 
-	    trackFromList.attr("src", pause_icon);
-	    curTrack = track;
+		player[0].play();
 	}
 })();
