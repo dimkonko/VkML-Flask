@@ -9,23 +9,23 @@
 {% endblock %}
 
 {% block content %}
-<div id="menu_buttons">
-	<a id="logout" class="btn" href="/logout">Logout</a>
+<div class="menu_buttons">
+	<a class="btn" href="/logout">Logout</a>
 </div>
-<div id="player_wrapper">
-	<div id="player_track"></div>
-	<audio id="player" src="" controls preload="none">
+<div class="player_wrapper">
+	<div id="player_track" class="player_track"></div>
+	<audio id="player" class="player" src="" controls preload="none">
 		Your browser doesn't support this player :(
 	</audio>
 </div>
-<div id="wrapper">
+<div class="wrapper">
 
-	<ul id="track_list">
+	<ul class="track_list">
 		{% for track in track_list %}
 		<li class="track">
 			<img class="play_img" src="static/img/play-icon.png">
-			<span>{{ track.artist }} - {{ track.title }}</span>
-			<a class="download_but" href="{{ track.url }}" download="{{ track.artist }} - {{ track.title }}">
+			<span class='track_title'>{{ track.artist }} - {{ track.title }}</span>
+			<a role='button' class="download_but" href="{{ track.url }}" download="{{ track.artist }} - {{ track.title }}">
 				<img src="static/img/save-icon.png">
 			</a>
 			<input type="text" value="{{ track.url }}" hidden/>

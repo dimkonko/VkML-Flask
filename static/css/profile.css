@@ -1,19 +1,18 @@
-#wrapper {
+.wrapper {
 	width: 60%;
-	margin: 0;
-	padding: 0;
+	padding: 0 0 72px 0;
 	margin: auto;
 }
 
 /* Menu buttons*/
-#menu_buttons {
+.menu_buttons {
 	position: fixed;
 	float: left;
 	margin: 20px;
 }
 
 /* Player */
-#player_wrapper {
+.player_wrapper {
 	position: fixed;
 	background-color: #E9ECF0;
 	z-index: 2;
@@ -26,19 +25,19 @@
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
-#player_track {
+.player_track {
 	margin-bottom: 4px;
 	padding-left: 10px;
 	font-size: 1.2em;
 	color: #333333;
 }
-#player {
+.player {
 	width: 100%;
 	background-color: #E9ECF0;
 }
 
 /* Track list */
-#track_list {
+.track_list {
 	margin: 0;
 	padding: 0;
 	margin-top: 10px;
@@ -51,18 +50,21 @@
 	line-height: 32px;
 	padding: 2px;
 	overflow: hidden;
-	color: #333333;
+	color: .333333;
 	border: 2px solid #3cb0fd;
 	opacity: 0.925;
 }
-.track img, span {
+.track img, .track_title {
 	float: left;
 }
-.track span {
+.track_title {
+	width: 80%;
 	margin-left: 8px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 .download_but {
-	display: block;
 	float: right;
 }
 .play_img, .download_but:hover {
@@ -70,7 +72,7 @@
 }
 
 /* When track is playing */*
-#track_playing {
+.track_playing {
 	background-color: #76c9fa;
 	opacity: 0.97;
 }
