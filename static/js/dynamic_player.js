@@ -2,14 +2,15 @@
 	var player = $("#player"),
 		playerTrack = $("#player_track"),
 		playIcon = $(".play_img"),
-		curTrack = playIcon.first().parent();
+		curTrack = playIcon.first().parent(),
+		el,
+		trackUrl,
+		trackName;
 
 	/*
 	 * Event Handlers
 	 */
 	playIcon.on("click", function() {
-		var el;
-
 		$(".track_playing").removeClass('track_playing');
 
 		playTrack(el = $(this).parent());
@@ -21,7 +22,7 @@
 	});
 
 	function playTrack(el) {
-		var trackUrl = el.data("track-url"),
+		trackUrl = el.data("track-url");
 		trackName = el.find("span").html();
 
 		el.addClass('track_playing');
