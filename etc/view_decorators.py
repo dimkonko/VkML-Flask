@@ -1,7 +1,7 @@
 from functools import wraps
 from flask import session, redirect
 
-def need_login(f):
+def authorized_only(f):
 	@wraps(f)
 	def inner(*args, **kwargs):
 		if "user" not in session:
