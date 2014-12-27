@@ -24,8 +24,8 @@ def get_access_token(client_id, client_secret, redirect_uri, code):
 
 def get_audio(user_id, access_token, v=5.25, count=""):
 	"""Get track list
-	This function send a post request to api service and create a track
-	list with returned params
+	This function send a post request to api service to get user track
+	list
 	"""
 	url_args = locals()
 	print "Args",  url_args
