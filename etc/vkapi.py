@@ -28,8 +28,19 @@ def get_audio(user_id, access_token, v=5.25, count=""):
 	list
 	"""
 	url_args = locals()
-	print "Args",  url_args
 	url = build_url("https://api.vk.com", "/method/audio.get", url_args)
 	r = requests.post(url)
 	req_data = json.loads(r.text)
 	return req_data
+
+
+def get_albums(owner_id, access_token):
+	"""Get list of albums
+	"""
+	url_args = locals()
+	url = build_url("https://api.vk.com", "/method/audio.getAlbums", url_args)
+	print "getAlbums:", url
+	r = requests.post(url)
+	req_data = json.loads(r.text)
+	return req_data
+

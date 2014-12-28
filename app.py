@@ -48,7 +48,7 @@ def auth():
 
 	# Adding user data in current session
 	session["user"] = {
-		"token": req_data["access_token"],
+		"access_token": req_data["access_token"],
 		"user_id": req_data["user_id"]
 	}
 	return redirect("/profile")
@@ -62,11 +62,22 @@ def profile():
 		audio_count - Total audio tracks
 	"""
 	req_data = vkapi.get_audio(session["user"]["user_id"],
-		session["user"]["token"])
+		session["user"]["access_token"])
 	if "error" in req_data:
+		print "Error in get_audio:"
+		print req_data
 		return "Something went wrong. Try to reload a page."
 	track_list = req_data["response"]["items"]
 	audio_count = req_data["response"]["count"]
+
+	req_data = vkapi.get_albums(session["user"]["user_id"],
+		session["user"]["access_token"])
+	if "error" in req_data:
+		print "Error in get_albums:"
+		print req_data
+
+	# Ignore first item, becouse first item is a count of albums
+	album_list = req_data["response"][1:]
 	return render_template("profile.html", track_list=track_list)
 
 
