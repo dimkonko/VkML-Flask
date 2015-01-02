@@ -29,6 +29,7 @@
 
 		player.attr("src", trackUrl);
 		playerTrack.html(trackName);
+		player.load();
 
 		player[0].play();
 	}
