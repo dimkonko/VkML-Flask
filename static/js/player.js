@@ -102,17 +102,18 @@ var Player = (function() {
 		_player.load();
 		_player.play();
 		obj.isPlaying = true;
+		console.log("Play:" + obj.isPlaying);
 	}
 
 	obj.pause = function() {
 		_player.pause();
 		obj.isPlaying = false;
+		console.log("Pause:" + obj.isPlaying);
 	}
 
 	obj.playNext = function() {
 		if (obj.canPlayNext) {
 			_setTrack(_curTrackId + 1);
-			obj.play();
 		} else {
 			_setTrack(0);
 		}
@@ -121,7 +122,6 @@ var Player = (function() {
 	obj.playPrev = function() {
 		if (obj.canPlayPrev) {
 			_setTrack(_curTrackId - 1);
-			obj.play();
 		}
 	}
 
@@ -202,18 +202,21 @@ window.onload = function() {
 
 	init();
 
-	console.log(player.getVolume());
-
 	butPlayerNext.onclick = function() {
-		player.playNext();
 		checkButStatus();
-		if (!player.isPlaying)
+		player.playNext();
+		if (!player.isPlaying) {
+			console.log(player.isPlaying);
 			checkPlayig();
+		}
 	}
 
 	butPlayerPrev.onclick = function() {
-		player.playPrev();
 		checkButStatus();
+		player.playPrev();
+		if (!player.isPlaying) {
+			checkPlayig();
+		}
 	}
 
 	butPlayerPlay.onclick = function() {
@@ -238,13 +241,13 @@ window.onload = function() {
 
 	function checkPlayig() {
 		if (player.isPlaying) {
-			player.pause();
 			butPlayerPlay.classList.remove("player_pause")
 			butPlayerPlay.classList.add("player_play");
+			player.pause();
 		} else {
-			player.play();
 			butPlayerPlay.classList.remove("player_play")
 			butPlayerPlay.classList.add("player_pause");
+			player.play();
 		}
 	}
 };

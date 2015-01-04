@@ -62,7 +62,7 @@ def profile():
 		audio_count - Total audio tracks
 	"""
 	req_data = vkapi.get_audio(session["user"]["user_id"],
-		session["user"]["access_token"], count=5)
+		session["user"]["access_token"])#, count=5)
 	if "error" in req_data:
 		print "Error in get_audio:"
 		print req_data
