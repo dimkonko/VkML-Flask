@@ -39,7 +39,6 @@ def get_albums(owner_id, access_token):
 	"""
 	url_args = locals()
 	url = build_url("https://api.vk.com", "/method/audio.getAlbums", url_args)
-	print "getAlbums:", url
 	r = requests.post(url)
 	req_data = json.loads(r.text)
 	return req_data

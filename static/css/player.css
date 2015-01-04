@@ -1,0 +1,59 @@
+.player_button {
+	width: 38px;
+	height: 38px;
+	background-repeat: none;
+}
+
+.player_prev {
+	background: url("../img/icons.png") -212px -1px;
+}
+.player_play {
+	background: url("../img/icons.png") -1px -1px;
+}
+.player_pause {
+	background: url('../img/icons.png') -71px -1px;
+}
+.player_next {
+	background: url("../img/icons.png") -139px -1px;
+}
+#player_range {
+	width: 65%;
+}
+.player_volume {
+	background: url("../img/icons.png") -1px -108px;
+}
+.player_volume_range {
+	width: 100px;
+}
+
+#player_title {
+	width: 100%;
+	color: white;
+}
+
+.player_wrapp {
+	position: fixed;
+	background-color: #E9ECF0;
+	z-index: 2;
+	padding: 5px;
+	width: 62%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	float: left;
+	background-color: #333333;
+	padding: 2px 15px;
+}
+.player_track {
+	margin-bottom: 4px;
+	padding-left: 10px;
+	font-size: 1.2em;
+	color: #333333;
+}
+.player {
+	width: 100%;
+	background-color: #E9ECF0;
+}
