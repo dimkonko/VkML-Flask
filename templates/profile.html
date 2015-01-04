@@ -20,7 +20,7 @@
 		<input id="player_prev" class="player_button player_prev" type="button" disabled="true" />
 		<input id="player_play" class="player_button player_play" type="button" />
 		<input id="player_next" class="player_button player_next" type="button" />
-		<input id="player_range" class="player_scrubber" type="range" min="0" max="100" step="1" value="0" />
+		<input id="player_range" class="player_scrubber" type="range" min="0" step="0.01" value="0" />
 		<input id="player_volume" class="player_button player_volume_on" type="button" />
 		<input id="player_volume_range" class="player_scrubber" type="range" min="0" max="100" step="1" />
 	</div>
@@ -31,7 +31,7 @@
 <div class="wrapper">
 	<ul id="track_list" class="track_list">
 		{% for track in track_list %}
-		<li class="track">
+		<li class="track" data-duration="{{ track.duration }}">
 			<div class="play_img  play_img_not_playing"></div>
 			<span class='track_title'>{{ track.artist }} - {{ track.title }}</span>
 			<a role='button' class="download_but" href="{{ track.url }}" download="{{ track.artist }} - {{ track.title }}">
@@ -43,5 +43,6 @@
 
 	<!-- Scripts for faster loading -->
 	<script src="static/js/player.js"></script>
+	<script src="static/js/init.js"></script>
 </div>
 {% endblock %}
