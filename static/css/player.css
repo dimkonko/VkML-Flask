@@ -19,8 +19,11 @@
 #player_range {
 	width: 65%;
 }
-.player_volume {
+.player_volume_on {
 	background: url("../img/icons.png") -1px -108px;
+}
+.player_volume_off {
+	background: url("../img/icons.png") -71px -108px;
 }
 .player_volume_range {
 	width: 100px;

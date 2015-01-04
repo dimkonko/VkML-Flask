@@ -91,6 +91,7 @@ var Player = (function() {
 		_title = title;
 		_player.volume = 0.5;
 		obj.isPlaying = false;
+		obj.isVolumeOn = true;
 	}
 
 	obj.setPlaylist = function(p) {
@@ -167,12 +168,13 @@ window.onload = function() {
 	var butPlayerNext = document.getElementById("player_next"),
 		butPlayerPrev = document.getElementById("player_prev"),
 		butPlayerPlay = document.getElementById("player_play"),
+		butVolume = document.getElementById("player_volume"),
 		volumeRange = document.getElementById("player_volume_range"),
 		playerRange = document.getElementById("player_range");
 
 	var player = new Player();
 
-	function init() {
+	(function init() {
 		var dom_track_list = document.getElementById("track_list").children;
 
 		player.initPlayer(document.getElementById("player"),
@@ -198,9 +200,7 @@ window.onload = function() {
 			this.title = title;
 			this.src = src;
 		}
-	}
-
-	init();
+	})();
 
 	butPlayerNext.onclick = function() {
 		player.playNext();
@@ -227,6 +227,23 @@ window.onload = function() {
 
 	playerRange.oninput = function() {
 		player.setTime(this.value);
+	}
+
+	butVolume.onclick = function() {
+		if (player.isVolumeOn) {
+			player.lastVolume = player.getVolume();
+			player.setVolume(0);
+			volumeRange.value = 0;
+			butVolume.classList.remove("player_volume_on")
+			butVolume.classList.add("player_volume_off");
+			player.isVolumeOn = false;
+		} else {
+			player.setVolume(player.lastVolume);
+			volumeRange.value = player.lastVolume * 100;
+			butVolume.classList.remove("player_volume_off")
+			butVolume.classList.add("player_volume_on");
+			player.isVolumeOn = true;
+		}
 	}
 
 	function checkButStatus() {
