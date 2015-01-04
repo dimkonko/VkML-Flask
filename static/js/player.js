@@ -124,8 +124,9 @@ var Player = (function() {
 		_curTrackId = trackId;
 		_title.innerHTML = _playlist[_curTrackId].title;
 		_player.src = _playlist[_curTrackId].src;
-		_setTime(0);
 		_setDuration(_playlist[_curTrackId].duration);
+		_setTime(0);
+		_pRange.value = 0;
 	}
 
 	var _checkButStatus = function() {
