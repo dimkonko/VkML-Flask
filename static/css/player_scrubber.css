@@ -9,7 +9,7 @@
 	height: 10px;
 	cursor: pointer;
 	animate: 0.2s;
-	background: #ac2;
+	background: #3cb0fd;
 	border: 0.1px solid #010101;
 }
 .player_scrubber::-webkit-slider-thumb {
@@ -26,7 +26,7 @@
 	height: 10px;
 	cursor: pointer;
 	animate: 0.2s;
-	background: #ac2;
+	background: #3cb0fd;
 	border: 0.1px solid #010101;
 }
 .player_scrubber::-moz-range-thumb {
