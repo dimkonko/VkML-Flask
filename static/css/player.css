@@ -57,3 +57,9 @@
 	width: 100%;
 	background-color: #E9ECF0;
 }
+#player_controls > * {
+
+    vertical-align: middle;
+    padding:0px;
+    margin:0px;
+}

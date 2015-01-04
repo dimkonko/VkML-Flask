@@ -203,20 +203,18 @@ window.onload = function() {
 	init();
 
 	butPlayerNext.onclick = function() {
-		checkButStatus();
 		player.playNext();
-		if (!player.isPlaying) {
-			console.log(player.isPlaying);
-			checkPlayig();
-		}
+		player.isPlaying = false;
+		console.log("Next: " + player.isPlaying);
+		checkPlayig();
+		checkButStatus();
 	}
 
 	butPlayerPrev.onclick = function() {
-		checkButStatus();
 		player.playPrev();
-		if (!player.isPlaying) {
-			checkPlayig();
-		}
+		player.isPlaying = false;
+		checkPlayig();
+		checkButStatus();
 	}
 
 	butPlayerPlay.onclick = function() {
